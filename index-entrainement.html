@@ -51,19 +51,46 @@
 
         //boite de dialogue
         //boite d'alerte
-        alert('ceci est un message alerte');
+        //alert('ceci est un message alerte');
         //confirm
-        confirm('confirmez vous?');
+        //confirm('confirmez vous?');
         //prompt
         //prompt permet de recuperer une donnée de l'utilisateur
-        prompt('quel est votre age?');
-
-
-
+        //prompt('quel est votre age?');
 
           /*-----------------------------------------------------------
-          -------------------3 variable------------------
+          -------------------3 variables------------------
           */
+           document.write('<h2>3- Variables</h2>');
+           // une variable est une 'boite virtuel' dans laquelle nous allons stoqué une donnée.cette donnée peut etre de different type, comme des mots des chiffres ou autre (voir chapitre sur les types de données)
+
+           // le mot clef "var" permet de déclarer une variable nommée "maBoite"
+           //caractère acceptés: de 0 a 9, de A à Z et de a à z, + $ _ mais jamais comme premier ou dernier caractère  
+
+           // une variable doit d'abord etre déclarer: déclaration 
+           var maBoite;
+           // nous lui affectons ensuite une valeur: affectation
+           maBoite = 10;
+             document.write('<h2>2- Affichage</h2>');
+
+             //affectation de la valeur via un prompt rempllie par l'utilisateur 
+             //exemple de declaration et d'affectation dans la meme  instruction 
+             var sonAge= prompt('quel est son age?')
+               document.write(sonAge);
+
+               //possiblilité de déclarer un ensemble de variables 
+               var prenom= 'sylvie',nom = 'dupont', genre= 'feminin'
+               prenom ='Martine'
+
+
+               console.log(prenom);
+               console.log(nom);
+
+
+
+           
+
+
         
 
 
