@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>selecteur</title>
+</head>
+<body>
+    <h2 id="titre">Mon titre de niveau 2</h2>
+
+    <div class="avion">airbus 1</div>
+    <div class="avion">airbus 2</div>
+    <div class="avion">airbus 3</div>
+
+
+    <p id="first">paragraphe1</p>
+    <p>paragraphe 2</p>
+    <p title="Infobulle">paragraphe 3</p>
+    <p>paragraphe 4</p>
+
+    <script>
+        window.onload=function(){
+            // selection naturelle d'un id
+
+            var monId = titre;
+            console.log(monId);
+
+            // selection by id
+            var monId2 = document.getElementById('titre');
+            console.log(monId2);
+
+            // selection by classname
+
+            var mesClasses = document.getElementsByClassName('avion');
+            //je recupere un ensemble : une collection html
+            console.log(mesClasses);
+            // je peux atteindre un des elements de la collection grace a l'indice [1]
+            console.log(mesClasses[1]);
+            // innerHTML définit le contenu de la balise
+            console.log(mesClasses[1].innerHTML);
+            mesClasses[1].innerHTML='nouveau contenu';
+
+            //selection by tagname
+
+            var mesP= document.getElementsByTagName('p');
+            console.log(mesP);
+            
+
+
+
+
+            for(var i=0; i<mesP.length;i++){
+                console.log(mesP[i].innerHTML);
+                mesP[i].style.marginTop ='50px';
+                mesP[i].style.backgroundColor = 'black';
+                mesP[i].style.color = '#fff';
+
+                
+
+                    
+
+            }
+            
+// liens des mots clefs des differents style :https://www.w3schools.com/jsref/dom_obj_style.asp
+
+
+// querySelector
+
+            var query = document.querySelectorAll('p.avion');
+            console.log(query[2]);
+            var query2 = document.querySelector('.avion');
+            console.log(query2[2]);
+
+            // selectionnée le airbus 3 : modifie son contenu en  "mon airbus"
+            // de plus stylisé pour y appliquer un fond bleu , un texte blanc et bold
+
+             console.log(mesClasses[1].innerHTML);
+            mesClasses[2].innerHTML = 'mon airbus';
+
+            mesClasses[2].style.backgroundColor = 'blue';
+            mesClasses[2].style.color = '#fff';
+            mesClasses[2].style.fontWeight = 'bold';
+
+
+            // correction
+
+            var query3= document.querySelectorAll('div.avion');
+            console.log(query3[2].innerHTML);
+            query3[2].innerHTML='mon airbus';
+
+             query3[2].style.backgroundColor='blue';
+              query3[2].style.color='#fff';
+               query3[2].style.fontWeight='bold';
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // modifier le contenu du h2 pour marquer 'nouveau titre'
+
+            console.log(monId2.innerHTML = 'nouveau titre');
+            
+
+        } //fin de mon window.onload ne pas effacer
+        
+    
+    </script>
+    
+</body>
+</html>
