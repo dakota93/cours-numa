@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>evenements JS</title>
+
+    <style>
+        #div1{ background-color: purple; color: #fff; padding: 10px;}
+         #div2{ background-color: cyan; color: black; padding: 10px;}
+         #parag{ background-color: yellowgreen; color: black; padding: 10px;}
+         #div3{ background-color: lightblue; color: black; padding: 10px;}
+         #prenom{width: 50px;}
+         .clickbouton{background: red; color:#fff; width:70px;}
+         
+    </style>
+</head>
+<body>
+
+    <h2 ondblclick="fdiv1();">click</h2>
+    <div id="div1">div1</div>
+
+    <h2>double click</h2>
+    <div id="div2">div2</div>
+
+    <p id="parag">Paragraphe a clicker</p>
+
+    <h2>Survol mouseover et mouseout</h2>
+    <div id="div3">div3</div>
+    
+
+    <h2>Focus</h2>
+    <form method="POST">
+        <label for="prenom">veuillez saisir votre prenom</label>
+    <input id="prenom" type="text" name="prenom">
+    <input type="submit" name="submit" id="submit" value="ok">
+
+    </form me> 
+
+
+    <script>
+
+        // ******************************div1 click******************************************//
+
+        // adEventlistenner a besoin de deux argument: 1- le mot clé correspondant a l'evenement (ici le click) 2- la fonction éxécuter lors de l'evenement (ici fdiv1)
+        document.querySelector('#div1').addEventListener('click', fdiv1);
+
+        function fdiv1(){
+            alert('attention site pour adulte...') 
+            }
+
+        // ******************************div2 double click******************************************//
+
+        document.getElementById('div2').addEventListener('dblclick',fdiv2 );
+
+        function fdiv2(){
+            alert('attention vous entrée sur un site adulte...');
+        }
+
+        // ************************cette fois ci avec variablediv2 double click***********************************//
+
+        var madiv2= document.getElementById('div2');
+        madiv2.addEventListener('dblclick', fdiv2);
+
+        function fdiv2(){
+            alert('attention vous entrée sur un site adulte....')
+        }
+
+        // ************************par function anonyme***********************************//
+
+        // sur ce paragraphe, plutot qu'appeler une fonction existante nous executons une fonction anonyme au moment du click
+
+        document.querySelector('#parag').addEventListener('click', function(){alert('site pour adulte');});
+
+
+        // ************************survol mouseover***********************************//
+         document.querySelector('#div3').addEventListener('mouseover', fdiv3);
+         function fdiv3(){
+             this.innerHTML = "j'ai réussie";
+             this.style.fontSize = "24px";
+         }
+
+
+        // ************************survol mouseout***********************************//
+
+         document.querySelector('#div3').addEventListener('mouseout', fdiv4);
+           
+
+        // function div change le texte au survol a condition que le queryselector soit activé//
+
+        function fdiv4(){
+            this.innerHTML = "site pour adulte";
+            this.style.fontSize= "16px";
+        }
+
+
+         // ************************focus***********************************//
+
+         document.querySelector('#prenom').addEventListener('focus',inputFocus);
+
+         function inputFocus(){
+             //alert('champs focus');
+             this.style.width = "250px";
+         }
+
+         document.querySelector('#prenom').addEventListener('blur', inputBlur);
+         function inputBlur(){
+             //alert('champs blur');
+             this.style.width = "50px";
+         }
+
+         document.querySelector('#submit').addEventListener('click',inputsubmit);
+         function inputsubmit(event){
+             event.preventDefault();
+             //alert('formulaire validé');
+             this.classList.add('clickbouton');
+             console.log(document.querySelector('#prenom').value);
+         }
+
+
+
+
+
+
+
+
+
+
+        
+    
+    
+    
+    
+    
+    </script>
+    
+</body>
+</html>
