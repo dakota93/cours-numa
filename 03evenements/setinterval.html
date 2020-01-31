@@ -16,16 +16,21 @@
     <script>
         var img=0;
         function f(){
-            img=+1;
+            img+=1;
             monImage.setAttribute("src", "../img/"+img+".jpg")
+            if (img == 6){
+            clearInterval(timer)
+            }
         }
         
-        var timer = window.setInterval('f()', 2000);
+        var timer = window.setInterval('f()', 1000);
     
     
     
     
     </script>
+    
+    <!--http://sharemycode.fr/i38 -->
     
 </body>
 </html>
