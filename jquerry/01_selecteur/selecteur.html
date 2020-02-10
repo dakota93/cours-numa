@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>selecteur</title>
+    <style>
+        .maclasse{
+            color: blue;
+            text-decoration: underline;
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Titre H1</h1>
+    <p>Paragraphe 1</p>
+    <p>Paragraphe 2</p>
+    <p>Paragraphe 3</p>
+    <p>Paragraphe 4</p>
+
+    <div>div1</div>
+    <div class="select">div2</div>
+    <nav class="select">nav1</nav>
+
+    <span>span 1</span>
+    <span>span 2</span>
+    <span class="fakeClasse">span 3</span>
+
+    <figure>
+        <img src="../../img/b.jpg" alt="petit chat blanc">
+        <figcaption></figcaption>
+
+    </figure>
+
+    
+
+
+
+<script src="../source/jquery-3.4.1.js">
+
+
+</script>
+    <script>
+        //console.log(document.getElementsByTagName('h1'));
+
+        //console.log(document.querySelector('h1')).innerHTML;
+
+        //la fonction dollars et l'equivalent d'un document.querrySelectorAll//
+        //la methode eq () permet de selectionné en jquerry un indice d'une collection//
+        //la methode html() remplace innerHTML pour recuperer ou redefinir un contenu de la balise
+        console.log($('h1').eq(0).html());
+
+        // pour le redefinir le contenu:
+        $('h1').eq(0).html('<a href="#">mon titre via Jquerry');
+
+        //redefinit le contenu du texte:
+        //$('h1').eq(0).text('<a href="#">mon titre via Jquerry');
+        console.log($('h1').eq(0).text());
+
+        console.log($('p').eq(2).text());
+
+        $('p').html('hello');
+
+        // plutot que de remplacer le texte d'une balise nous pouvons choisir de rajouter du texte  aussi nous allons devoir choisir de le rajoouter avant ou apres
+
+
+        $('p').eq(1).append(' aprés');
+        $('p').eq(2).prepend('avant ');
+
+        // méthode css() applique des changements css en nremplacement de .style 
+            // appliquer un seul changement :
+            $('p').css("color", "red");
+            // appliquer plusieurs changements
+            $('p').css({
+                'color': 'red',
+                'font-weight': 'bold',
+                'margin':'10px'
+            });
+
+            //selectionner les div leur donner un contour rouge
+
+            $('div').css({'border': '1px solid red'
+            });
+
+            //selectionner les elements qui ont la classe select pour leur appliquer une couleur de fond blue et un text blanc
+
+            $('.select').css({
+                'background-color': 'blue',
+                'color': '#fff'
+            })
+        //selectionnée les trois elements pour les faire précéder leur contenu d'un tiret ('- ')
+
+        $ ('div, nav').prepend('- ');
+
+
+        //manipulation de classes (addClass(), removeClass(),toggleClass(), hasClass())
+
+        console.log($('span').eq(1).text);
+        $('span').eq(1).addClass('maclasse');
+
+        //removeClass() retire une classe existante a un element
+
+        $('span').eq(2).removeClass('fakeClasse');
+
+        //retirer ma classe sur le span 2
+
+        $('span').eq(1).removeClass('maclasse');
+
+        //manipulation des attributs (attr(), removeAttr())
+
+        //attr() qui etablie un nouvel attribut 
+
+        $('div').eq(1).attr("title","hello");
+
+        //retirez la classe vide de span 2
+
+        $('span:eq(1), span:eq(3)').removeAttr('class');
+
+        //parents enfants
+
+        $('figure').find('img').attr("title","petit chat");
+
+        //en selectionna tun enfant je vais essayer d'atteindre le parent. 
+        
+        //.parent() va chercher ke parent naturel di je demande parent() parent() il va me chercher le parent du parent
+
+        $('img').parent().css("border", "2px solid red");
+
+        $('img').parent().parent().css("border","2px solid red");
+
+        // exercice: le but sera de recuperer l'attribut alt de img dans variable
+
+        // demander en jquerry a ce que cette variable s'affiche dans figcaption
+
+        console.log($('img').attr('alt'));
+
+        var monAlt= $('img').attr('alt');
+
+        console.log(monAlt);
+        $('figcaption').html(monAlt);
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.contour{
+    border: 2px solid rgb(241, 134, 134);
+}
+
+.bleu{
+    background: rgb(94, 94, 236);
+}
+
+.vert{
+    background: lightgreen;
+    
+}
+
+.red{
+    background-color: rgb(243, 92, 92);
+}
+
+.jaune{
+    background: rgb(231, 212, 102);
+}
+
+.violet{
+    background: purple;
+}
