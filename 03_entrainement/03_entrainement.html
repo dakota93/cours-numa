@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03-entrainement</title>
+    <style>
+
+    h2{border: 1px solid grey;margin:0;padding:5px}
+    h2+div{background: gray; height: 150px;}
+    #cube{width: 100px;height: 100px; background: lightblue; position:relative;}
+
+    </style>
+
+</head>
+<body>
+    <div id="div1">
+        contenue de ma div 
+    </div>
+
+    <button id="b1" style="display: none;">show</button>
+    <button id="b2">hide</button>
+    <button id="b3">toggle</button>
+
+    <hr>
+    <div id="div2" style="display: none;">
+        contenu de ma div 2 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor facilis, exercitationem cumque expedita voluptates
+        consequatur quibusdam quasi illo commodi tempora alias porro provident reiciendis vero enim amet at suscipit iusto.
+        <img src="../img/b.jpg" alt="chat" style="width: 200px;float: left">
+    </div>
+    <button id="b4">FadeIn</button>
+    <button id="b5">FadeOut</button>
+    <button id="b6">FadeToggle</button>
+    <button id="b7">FadeTo</button>
+
+    <h2 id="titre1">titre 1</h2>
+    <div id="contenu1" style="display: none;" >contenu 1</div>
+
+    <h2 id="titre2">titre 2</h2>
+    <div id="contenu2">contenue 2</div>
+
+    <h2 id="titre3">titre 3</h2>
+    <div id="contenu3">contenu 3</div>
+
+    <hr>
+
+    <div id="cube">cube</div>
+
+
+    <script src="../../cours-numa/jquerry/source/jquery-3.4.1.js"></script>
+
+    <script>
+// methode show() montre un élément si celui ci est display none (style="display none;")
+        $(function(){
+            $('#b1').click(function(){
+                $('#div1').show(),
+                $('#b1').hide();
+                $('#b2').show();
+
+            });
+
+            //visé le b2 pour qu'il cache la div si elle est visible
+            $('#b2').click(function(){
+                $('#div1').hide();
+                $('#b2').hide();
+                $('#b1').hide();  
+            })
+
+            //toggle
+                $('#b3').click(function(){
+                $('#div1').toggle();
+            });
+
+        
+
+            //fadeinn
+            $('#b4').click(function () {
+                 $('#div2').fadeIn(3000);
+            });
+
+            //fadeout
+
+             $('#b5').click(function () {
+                    $('#div2').fadeOut(3000);
+                });
+
+                //fadetoggle
+                $('#b6').click(function () {
+                    $('#div2').toggle();
+                    alert('animation terminée !')
+
+                });
+
+                //fadeTo
+
+                 $('#b7').click(function () {
+                    $('#div2').fadeTo(2000,0.5);
+                });     
+
+            // l'effet slide
+            $('#titre1').click(function() {
+                $('#contenu1').slideDown('slow', function(){
+                    alert('fini!');
+
+            });
+            });
+
+            $('#titre2').click(function () {
+                $('#contenu2').slideUp('slow');
+
+            });
+
+            $('#titre3').click(function () {
+                $('#contenu3').slideToggle('slow');
+                $('#contenu2').slideUp('slow');
+                $('#contenu1').slideUp('slow');
+
+            });
+            
+            //animated()
+            $('#cube').on('click', function(){
+                $(this).animate({
+                    'width':'200px', 
+                    'height':'80px',
+                    'left':'100px'              
+    
+             });
+
+            });
+    
+    });
+    
+    </script>
+</body>
+</html>
