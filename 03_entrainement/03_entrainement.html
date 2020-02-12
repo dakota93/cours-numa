@@ -9,7 +9,8 @@
 
     h2{border: 1px solid grey;margin:0;padding:5px}
     h2+div{background: gray; height: 150px;}
-    #cube{width: 100px;height: 100px; background: lightblue; position:relative;}
+    #cube,#cube2{width: 100px;height: 100px; background: lightblue; position:relative;}
+    #cube2{background: tomato; opacity: 0;}
 
     </style>
 
@@ -47,6 +48,9 @@
 
     <div id="cube">cube</div>
 
+    <h3 style="position: relative;">animation par étapes</h3>
+    <div id="cube2">cube 2</div>
+
 
     <script src="../../cours-numa/jquerry/source/jquery-3.4.1.js"></script>
 
@@ -65,7 +69,7 @@
                 $('#div1').hide();
                 $('#b2').hide();
                 $('#b1').hide();  
-            })
+            });
 
             //toggle
                 $('#b3').click(function(){
@@ -125,10 +129,23 @@
                     'height':'80px',
                     'left':'100px'              
     
-             });
-
+                });
             });
-    
+
+             //animation par étapes
+            function etapes(){
+                $('#cube2').animate({'opacity':'1'},1000);
+                $(this).animate({'left':'200px'}, 2000);
+                $(this).animate({ 'opacity': '0.5' }, 500);
+                $(this).animate({ 'left': '-200px' }, 2000);
+                
+                   
+
+             };
+
+             $('#cube2').mouseenter(etapes);
+             $('h3').click()
+
     });
     
     </script>
