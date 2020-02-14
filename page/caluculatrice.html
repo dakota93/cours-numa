@@ -1,0 +1,130 @@
+<!DOCTYPE htmL>
+<html lang="fr">
+
+<head>
+    <!-- metatags indispensable -->
+    <meta charset="UTF-8">
+    <!-- shrink to fist=no pour boostrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculatrice-numa-boostrap-numa</title>
+    <!-- bosstrap css en cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+    <style>
+        body{
+            background: url(../img/2.jpg) no-repeat;
+        }
+        .blanc{
+
+        }
+       
+    </style>
+</head>
+
+ <body>
+       <div class="container">
+        
+
+            <div class="jumbotron">
+                <h1 class="display-5">Calculatrice & Bootstrap 4</h1>
+                <p class="lead">Une calculatrice en jQuery- <span class="badge badge-dark">numa krouchi</span></p>
+                <hr class="my-4">
+            </div>
+            <button type="button" class="btn btn-outline-dark btn-sm"   id="afficher">Afficher</button>
+            <button type="button" class="btn btn-outline-dark  btn-sm" id="cacher">Cacher</button>
+            <button type="button" class="btn btn-outline-dark  btn-sm" id="toggle">Toggle</button>
+            
+           <div id="conteneur">
+                <form action="#" method="GET">
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" type="number" name="saisie1" id="saisie1">
+                        </div>
+                        <div class="col">
+                            <select name="operateur" id="operateur" class="form-control">
+                                <option>+</option>
+                                <option>-</option>
+                                <option>*</option>
+                                <option>/</option>
+                            </select>
+                        </div>
+                        <div class="col"> 
+                            <input  class="form-control" type="number" name="saisie2" id="saisie2">
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="form-control btn-primary" name="bouton" id="bouton" value="Calculez">Calculez</button>
+                        </div>
+                    </div>
+        
+                </form>
+        </div>
+    </div>
+
+    <script src="../jquerry/source/jquery-3.4.1.js"></script>
+    <script>
+
+        $(function () {
+            function calcul(event) {
+                event.preventDefault();
+                // console.log('ça marche');
+                var saisie1 = $('#saisie1').val();
+                // console.log(saisie1);
+                var saisie2 = $('#saisie2').val();
+                // console.log(saisie2);
+                var operateur = $('#operateur').val();
+                // console.log(operateur);
+
+                if (operateur == '+') {
+                    resultat = parseInt(saisie1) + parseInt(saisie2);
+                    console.log(resultat);
+
+                }
+                if (operateur == '-') {
+                    resultat = (saisie1 - saisie2);
+                    console.log(resultat);
+
+                }
+                if (operateur == '*') {
+                    resultat = (saisie1 * saisie2);
+                    console.log(resultat);
+
+                }
+                if (operateur == '/') {
+                    resultat = (saisie1 / saisie2);
+                    console.log(resultat);
+                }
+                alert(saisie1 + operateur + saisie2 + '=' + resultat);
+            };
+
+            $('#bouton').click(calcul);
+
+            $('#afficher').click(function () {
+                $('#conteneur').slideDown();
+            });
+            $('#cacher').click(function () {
+                $('#conteneur').slideUp();
+            });
+            $('#toggle').click(function () {
+                $('#conteneur').slideToggle();
+            })
+        });
+    </script>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+<script src="../js/perso.js"></script>
+</body>
+
+</html>
