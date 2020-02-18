@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrainement jquerry ui</title>
+    <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css" />
+    <style>
+      .nouvelleClasse {
+        font-size: 30px;
+        color: skyblue;
+      }
+      .animation {
+        width: 500px;
+        height: 80px;
+        background: grey;
+        color: white;
+        text-align: center;
+        line-height: 80px;
+      }
+      .effet {
+        height: 100px;
+        width: 100px;
+        background-color: tomato;
+      }
+
+      .ui-state-active,
+      .ui-widget-content .ui-state-active,
+      .ui-widget-header .ui-state-active,
+      a.ui-button:active,
+      .ui-button:active,
+      .ui-button.ui-state-active:hover {
+        border: 1px solid #003eff;
+        border-bottom-width: 1px solid, red;
+        background: tomato;
+        font-weight: normal;
+        color: #ffffff;
+      }
+
+      #joueur {
+        width: 50%;
+        border: 2px solid grey;
+      }
+
+      #adversaire {
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+      }
+
+      #resizable {
+        /* cssmatic.com */
+        width: 250px;
+        height: 250px;
+        border: 1px solid;
+
+        -webkit-box-shadow: -40px 47px 68px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: -40px 47px 68px 0px rgba(0,0,0,0.75);
+        box-shadow: -40px 47px 68px 0px rgba(0,0,0,0.75);
+
+        background: rgba(213, 240, 251, 1);
+        background: -moz-linear-gradient(
+          -45deg,
+          rgba(213, 240, 251, 1) 0%,
+          rgba(46, 206, 255, 1) 47%,
+          rgba(223, 243, 251, 1) 100%
+        );
+        background: -webkit-gradient(
+          left top,
+          right bottom,
+          color-stop(0%, rgba(213, 240, 251, 1)),
+          color-stop(47%, rgba(46, 206, 255, 1)),
+          color-stop(100%, rgba(223, 243, 251, 1))
+        );
+        background: -webkit-linear-gradient(
+          -45deg,
+          rgba(213, 240, 251, 1) 0%,
+          rgba(46, 206, 255, 1) 47%,
+          rgba(223, 243, 251, 1) 100%
+        );
+        background: -o-linear-gradient(
+          -45deg,
+          rgba(213, 240, 251, 1) 0%,
+          rgba(46, 206, 255, 1) 47%,
+          rgba(223, 243, 251, 1) 100%
+        );
+        background: -ms-linear-gradient(
+          -45deg,
+          rgba(213, 240, 251, 1) 0%,
+          rgba(46, 206, 255, 1) 47%,
+          rgba(223, 243, 251, 1) 100%
+        );
+        background: linear-gradient(
+          135deg,
+          rgba(213, 240, 251, 1) 0%,
+          rgba(46, 206, 255, 1) 47%,
+          rgba(223, 243, 251, 1) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5f0fb', endColorstr='#dff3fb', GradientType=1 );
+      }
+      #resizable h5 {
+        background: lightgrey;
+        text-align: center;
+        margin: 0;
+        padding: 10px;
+      }
+
+      .ui-resizable-helper { border: 1px dotted gray; }
+
+      /* selected */
+
+      /* classe parent de  la liste ol */
+
+      .ui-selectable{list-style: none; padding: 0; margin: 0;}
+/* clase l'element selectionnable par defaut */
+      .ui-selectee{background: gray; color: white;padding: 5px 10px; border: 1px solid black; width: 150px; text-align: center;}
+      /* clase l'element en train d'etre cliquer */
+      .ui-selecting{background: #bbb;}
+      /* clase l'element une fois cliqué  */
+      .ui-selected{background: #222; color: #fff;}
+      
+
+    </style>
+  </head>
+  <body>
+    <h1>Dakota Style</h1>
+
+    <div id="accordion">
+      <h3>Section 1</h3>
+      <div>
+        <p>
+          <img
+            src="jquery-ui-1.12.1/images/ui-icons_444444_256x240.png"
+            alt=""
+          />
+        </p>
+      </div>
+      <h3>Section 2</h3>
+      <div>
+        <p>
+          Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+          purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis
+          porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non
+          quam. In suscipit faucibus urna.
+        </p>
+      </div>
+      <h3>Section 3</h3>
+      <div>
+        <p>
+          Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque
+          lobortis. Phasellus pellentesque purus in massa. Aenean in pede.
+          Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed
+          commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis
+          leo purus venenatis dui.
+        </p>
+        <ul>
+          <li>List item one</li>
+          <li>List item two</li>
+          <li>List item three</li>
+        </ul>
+      </div>
+      <h3>Section 4</h3>
+      <div>
+        <p>
+          Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+          et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+          mauris vel est.
+        </p>
+        <p>
+          Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat
+          lectus. Class aptent taciti sociosqu ad litora torquent per conubia
+          nostra, per inceptos himenaeos.
+        </p>
+      </div>
+    </div>
+
+    <h4 id="ajoutClasse">ajout de classe jquerry ui</h4>
+
+    <div class="animation">voici le contenue de ma div a animer</div>
+
+    <div class="effet">effet</div>
+    <button id="boot_effet">click</button>
+
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">Nunc tincidunt</a></li>
+        <li><a href="#tabs-2">Proin dolor</a></li>
+        <li><a href="#tabs-3">Aenean lacinia</a></li>
+      </ul>
+      <div id="tabs-1">
+        <p>
+          Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus.
+          Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam
+          elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris
+          dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed
+          magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales
+          tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et
+          mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt
+          interdum. Phasellus ipsum. Nunc tristique tempus lectus.
+        </p>
+      </div>
+      <div id="tabs-2">
+        <p>
+          Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida
+          ante, ut pharetra massa metus id nunc. Duis scelerisque molestie
+          turpis. Sed fringilla, massa eget luctus malesuada, metus eros
+          molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet
+          fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam.
+          Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis.
+          Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra
+          nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas
+          feugiat, tellus pellentesque pretium posuere, felis lorem euismod
+          felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et
+          purus.
+        </p>
+      </div>
+      <div id="tabs-3">
+        <p>
+          Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti.
+          Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat,
+          eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent
+          taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+          himenaeos. Fusce sodales. Quisque eu urna vel enim commodo
+          pellentesque. Praesent eu risus hendrerit ligula tempus pretium.
+          Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.
+        </p>
+        <p>
+          Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper
+          at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo
+          vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti.
+          Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros,
+          id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero
+          sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat
+          porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu
+          tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce
+          in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+    <hr />
+
+    <div style="border: 1px solid red; height: 100vh;">
+      <img id="image1" src="jquery-ui-1.12.1/images/cheval_01.jpg"alt="cheval"/>
+      <img id="image4"src="jquery-ui-1.12.1/images/cheval_04.jpg"alt="cheval"/>
+      <img id="image8" src="jquery-ui-1.12.1/images/cheval_08.jpg" alt="cheval"/>
+      <img id="image2"src="jquery-ui-1.12.1/images/cheval_02.jpg"alt="cheval"/>
+      <img id="image6" src="jquery-ui-1.12.1/images/cheval_06.jpg"alt="cheval"/>
+      <img id="image3"src="jquery-ui-1.12.1/images/cheval_03.jpg"alt="cheval"/>
+      <img id="image5"src="jquery-ui-1.12.1/images/cheval_05.jpg" alt="cheval"/>
+      <img id="image7" src="jquery-ui-1.12.1/images/cheval_07.jpg" alt="cheval" />
+      <img id="image9" src="jquery-ui-1.12.1/images/cheval_09.jpg"alt="cheval"/>
+    </div>
+
+    <div
+      style="border: 5px solid lightblue; height: 80vh; display: flex;display: flex; flex-wrap: wrap; justify-content: space-between;"
+    >
+      <h4 style="width: 100%; ">Droppable</h4>
+
+      <div id="joueur">
+        <img id="pierre" src="jquery-ui-1.12.1/images/pierre.png" alt="" />
+        <img id="ciseaux" src="jquery-ui-1.12.1/images/ciseaux.png" alt="" />
+        <img id="feuille" src="jquery-ui-1.12.1/images/feuille.png" alt="" />
+      </div>
+
+      <div id="adversaire">
+        <img id="img_adv" src="jquery-ui-1.12.1/images/ciseaux.png" alt="" />
+      </div>
+
+      <div id="ecran"></div>
+    </div>
+
+    <hr />
+    <hr />
+    <div id="parent" style="border: 5px solid lightblue; height: 80vh;">
+      <h4>resizable</h4>
+
+      <div id="resizable">
+        <h5>Redimentionné moi</h5>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit cumque repellat tenetur, beatae qui ab doloribus. Soluta, rem at. Eligendi nemo ipsa inventore laborum dolore? Assumenda, natus. Minus, ipsam consequuntur!</p>
+      </div>
+    </div>
+
+    <hr><hr>
+
+    <h4>Selectable</h4>
+    <ol id="selectable">
+      <li>élément1</li>
+      <li>élément2</li>
+      <li>élément3</li>
+    </ol>
+
+    <hr><hr>
+
+    <h4>date picker</h4>
+
+    <!-- le date picker viens en remplacement du inputtype="date" tant que tous les navigateurs ne permette pas son utilisation -->
+    <!-- <input type="date"> -->
+
+    <input type="text" id="input" placeholder="jj - mm - yy">
+
+    <hr><hr>
+
+    <h4>autocomplete</h4>
+
+    <input type="text" id="autocomplete">
+
+
+
+
+    <!-- script jquerry et jquerry-ui -->
+    <script src="../../cours-numa/jquerry/source/jquery-3.4.1.js"></script>
+    <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+
+    <script>
+      $(function() {
+        $("#accordion").accordion();
+
+        $("#ajoutClasse").click(function() {
+          $(this).toggleClass("nouvelleClasse", 2000);
+        });
+
+        $(".animation").click(function() {
+          var hauteur = "200px";
+
+          $(this).animate(
+            {
+              width: hauteur,
+              height: hauteur,
+              background: "blue",
+              color: "black",
+              lineHeight: hauteur
+            },
+            2000
+          );
+        });
+
+        $("#boot_effet").click(function() {
+          $(".effet").toggle("bounce");
+        });
+
+        $("#tabs").tabs({
+          event: "mouseover"
+        });
+
+        //rendre les image draggable
+
+        $("#image1").draggable({ snap: "#image2, #image4", snapmode: "outer" });
+        $("#image2").draggable({
+          snap: "#image1, #image3, #image5",
+          snapmode: "outer"
+        });
+        $("#image3").draggable({ snap: "#image2, #image6", snapmode: "outer" });
+        $("#image4").draggable({
+          snap: "#image1, #image5, #image7",
+          snapmode: "outer"
+        });
+        $("#image5").draggable({
+          snap: "#image2, #image4, #image6",
+          snapmode: "outer"
+        });
+        $("#image6").draggable({
+          snap: "#image3, #image5, #image9",
+          snapmode: "outer"
+        });
+        $("#image7").draggable({ snap: "#image4, #image8", snapmode: "outer" });
+        $("#image8").draggable({
+          snap: "#image7, #image9, #image5",
+          snapmode: "outer"
+        });
+        $("#image9").draggable({ snap: "#image8, #image6", snapmode: "outer" });
+
+        $("img").mousedown(function() {
+          $(this).css("cursor", "grabbing");
+        });
+
+        $("img").mouseup(function() {
+          $(this).css("cursor", "grab");
+        });
+
+        //droppable
+
+        //  $('#pierre').draggable();
+
+        $("#feuille,#ciseaux,#pierre").draggable({
+          revert: "invalid"
+        });
+        $("#adversaire").droppable({
+          accept: "#feuille,#pierre",
+          drop: function(evenement, element) {
+            //alert('j\'accepte des éléments');
+            if (element.draggable.is("#pierre")) {
+              alert("gagné");
+              $(this).css("background", "lime");
+              $("#ecran").html(
+                '<img src="jquery-ui-1.12.1/images/feu.gif" alt="cheval">'
+              );
+            } else {
+              alert("perdu");
+              $(this).css("background", "orange");
+            }
+          }
+        });
+
+        //mettre un droppable sur le cadre gris (#joueur) pour pouvoir y renvoyer feuille et pierre
+
+        $("#joueur").droppable({
+          accept: "#feuille,#pierre, #ciseaux",
+          drop: function() {
+            $(this).css("background", "lightgrey");
+          }
+        });
+
+        //  function direbonjour(){
+        //    document.write('Bonjour'+ prenom);
+        //  }
+
+        //  direbonjour('kiki');
+
+        //resizable
+        $("#resizable").resizable({
+          animate: true,
+          containement: "#parent",
+          helper:"monhelper",
+          maxWidth:450,
+          maxHeight:300,
+          minHeight:250,
+          minWidth: 250,
+          aspectRatio: 1/1
+           });
+
+        //selectable
+ 
+ $('#selectable').selectable({
+   stop:function(){
+     console.log($('.ui-selected').text());
+   }
+ });
+
+ //date picker
+
+ $('#input').datepicker({
+    monthNames: [ "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre" ],  
+    dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
+    dayNames: [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" ], 
+    firstDay:1,
+    dateFormat: "dd-m-yy"
+});
+
+
+// autocomplete
+
+var mestags = [
+  "paris","nantes", "lyon", "lille"
+]
+
+$('#autocomplete').autocomplete({
+  source: mestags
+});
+
+
+ 
+
+});
+
+
+
+    </script>
+  </body>
+</html>
